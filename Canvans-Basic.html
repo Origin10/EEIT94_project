@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas Example</title>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            var x = 100;
+            var y = 250;
+            var radius = 30;
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = "#46C7C7";
+            context.fill();
+
+            var x = 50;
+            var y = 20;
+            var width = 300;
+            var height = 100;
+            context.beginPath();
+            context.rect(x, y, width, height);
+            context.fillStyle = "#F76541";
+            context.fill();
+
+            var img = new Image();
+            img.onload = function() {
+                var pattern = context.createPattern(img, "repeat");
+                context.rect(200, 200, canvas.width - 250, canvas.height - 250);
+                context.fillStyle = pattern;
+                context.fill();
+            };
+            img.src = "http://www.w3.org/html/logo/img/mark-word-icon.png";
+
+            //可以開始畫圖了:)
+            context.beginPath();
+            context.moveTo(50, 50);
+            context.lineTo(150, 50);
+            context.lineTo(150, 150);
+            context.lineTo(50, 150);
+            context.lineTo(50, 50);
+            context.strokeStyle = '#ff0000';
+            context.lineWidth = 10;
+            context.lineCap = "square";
+            context.stroke();
+            context.fillStyle = "green";
+            context.fill();
+
+            //lineCap: butt, round, square
+            context.beginPath();
+            context.moveTo(200, 50);
+            context.lineTo(300, 50);
+            context.strokeStyle = 'blue';
+            context.lineWidth = 20;
+            context.lineCap = "butt";
+            context.stroke();
+            context.beginPath();
+            context.moveTo(200, 100);
+            context.lineTo(300, 100);
+            context.strokeStyle = 'green';
+            context.lineWidth = 20;
+            context.lineCap = "round";
+            context.stroke();
+            context.beginPath();
+            context.moveTo(200, 150);
+            context.lineTo(300, 150);
+            context.strokeStyle = 'red';
+            context.lineWidth = 20;
+            context.lineCap = "square";
+            context.stroke();
+
+            //半圓
+            x = 200;
+            y = 150;
+            radius = 30;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI, false);
+            context.fillStyle = "#46C7C7";
+            context.fill();
+            //半圓,逆時鐘
+
+            x = 300;
+            y = 150;
+            radius = 30;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI, true);
+            context.fillStyle = "#46C7C7";
+            context.fill();
+
+            //裁切範圍
+            context.beginPath();
+            context.rect(100, 50, 200, 150);
+            context.clip();
+            //暗紅色圓
+            context.beginPath();
+            context.arc(200, 200, 100, 0, 2 * Math.PI, false);
+            context.fillStyle = "#A52A2A";
+            context.fill();
+            //黃色圓
+            context.beginPath();
+            context.arc(100, 50, 150, 0, 2 * Math.PI, false);
+            context.fillStyle = "#FFA500";
+            context.fill();
+            //綠色圓
+            context.beginPath();
+            context.arc(300, 50, 150, 0, 2 * Math.PI, false);
+            context.fillStyle = "#008000";
+            context.fill();
+
+        };
+    </script>
+    <style>
+        body {
+            margin: 10px;
+            padding: 0px;
+        }
+
+        #myCanvas {
+            border: 1px solid #666666;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400"></canvas>
+</body>
+
+</html>

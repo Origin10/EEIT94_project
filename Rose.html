@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Rose</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin-left:200px">
+<div style="text-align: center">
+    <canvas id="c"></canvas>
+</div>
+
+<script>
+function surface(a, b) {
+    // 使用 a 和 b 作为采样范围的参数
+    return {
+        x: a*50,
+        y: b*50
+    };
+    // 该表面是一个 50*50 单元区域
+}
+</script>
+
+<script>
+var canvas = document.body.appendChild(document.createElement("canvas")),
+    context = canvas.getContext("2d"),
+    a, b, position;
+
+for (a = 0; a < 1; a += .1) {
+    for (b = 0; b < 1; b += .1) {
+        position = surface(a, b);
+        context.fillRect(position.x, position.y, 1, 1);
+    }
+}
+</script>
+
+
+</body>
+</html>
